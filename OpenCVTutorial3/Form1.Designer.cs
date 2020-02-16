@@ -32,15 +32,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonContours = new System.Windows.Forms.RadioButton();
+            this.radioButtonPerspective = new System.Windows.Forms.RadioButton();
+            this.radioButtonMostOuter = new System.Windows.Forms.RadioButton();
             this.radioButtonOuteBox = new System.Windows.Forms.RadioButton();
             this.radioButtonCanny = new System.Windows.Forms.RadioButton();
             this.radioButtonBin = new System.Windows.Forms.RadioButton();
             this.radioButtonSrc = new System.Windows.Forms.RadioButton();
-            this.radioButtonMostOuter = new System.Windows.Forms.RadioButton();
-            this.radioButtonPerspective = new System.Windows.Forms.RadioButton();
-            this.radioButtonContours = new System.Windows.Forms.RadioButton();
             this.buttonStart2 = new System.Windows.Forms.Button();
             this.buttonStart3 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -91,6 +92,42 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TYPE";
             // 
+            // radioButtonContours
+            // 
+            this.radioButtonContours.AutoSize = true;
+            this.radioButtonContours.Location = new System.Drawing.Point(7, 146);
+            this.radioButtonContours.Name = "radioButtonContours";
+            this.radioButtonContours.Size = new System.Drawing.Size(72, 16);
+            this.radioButtonContours.TabIndex = 0;
+            this.radioButtonContours.TabStop = true;
+            this.radioButtonContours.Text = "contours";
+            this.radioButtonContours.UseVisualStyleBackColor = true;
+            this.radioButtonContours.CheckedChanged += new System.EventHandler(this.radioButtonContours_CheckedChanged);
+            // 
+            // radioButtonPerspective
+            // 
+            this.radioButtonPerspective.AutoSize = true;
+            this.radioButtonPerspective.Location = new System.Drawing.Point(7, 124);
+            this.radioButtonPerspective.Name = "radioButtonPerspective";
+            this.radioButtonPerspective.Size = new System.Drawing.Size(88, 16);
+            this.radioButtonPerspective.TabIndex = 5;
+            this.radioButtonPerspective.TabStop = true;
+            this.radioButtonPerspective.Text = "perspective";
+            this.radioButtonPerspective.UseVisualStyleBackColor = true;
+            this.radioButtonPerspective.CheckedChanged += new System.EventHandler(this.radioButtonPerspective_CheckedChanged);
+            // 
+            // radioButtonMostOuter
+            // 
+            this.radioButtonMostOuter.AutoSize = true;
+            this.radioButtonMostOuter.Location = new System.Drawing.Point(6, 102);
+            this.radioButtonMostOuter.Name = "radioButtonMostOuter";
+            this.radioButtonMostOuter.Size = new System.Drawing.Size(44, 16);
+            this.radioButtonMostOuter.TabIndex = 4;
+            this.radioButtonMostOuter.TabStop = true;
+            this.radioButtonMostOuter.Text = "box";
+            this.radioButtonMostOuter.UseVisualStyleBackColor = true;
+            this.radioButtonMostOuter.CheckedChanged += new System.EventHandler(this.radioButtonMostOuter_CheckedChanged);
+            // 
             // radioButtonOuteBox
             // 
             this.radioButtonOuteBox.AutoSize = true;
@@ -139,42 +176,6 @@
             this.radioButtonSrc.UseVisualStyleBackColor = true;
             this.radioButtonSrc.CheckedChanged += new System.EventHandler(this.radioButtonSrc_CheckedChanged);
             // 
-            // radioButtonMostOuter
-            // 
-            this.radioButtonMostOuter.AutoSize = true;
-            this.radioButtonMostOuter.Location = new System.Drawing.Point(6, 102);
-            this.radioButtonMostOuter.Name = "radioButtonMostOuter";
-            this.radioButtonMostOuter.Size = new System.Drawing.Size(44, 16);
-            this.radioButtonMostOuter.TabIndex = 4;
-            this.radioButtonMostOuter.TabStop = true;
-            this.radioButtonMostOuter.Text = "box";
-            this.radioButtonMostOuter.UseVisualStyleBackColor = true;
-            this.radioButtonMostOuter.CheckedChanged += new System.EventHandler(this.radioButtonMostOuter_CheckedChanged);
-            // 
-            // radioButtonPerspective
-            // 
-            this.radioButtonPerspective.AutoSize = true;
-            this.radioButtonPerspective.Location = new System.Drawing.Point(7, 124);
-            this.radioButtonPerspective.Name = "radioButtonPerspective";
-            this.radioButtonPerspective.Size = new System.Drawing.Size(88, 16);
-            this.radioButtonPerspective.TabIndex = 5;
-            this.radioButtonPerspective.TabStop = true;
-            this.radioButtonPerspective.Text = "perspective";
-            this.radioButtonPerspective.UseVisualStyleBackColor = true;
-            this.radioButtonPerspective.CheckedChanged += new System.EventHandler(this.radioButtonPerspective_CheckedChanged);
-            // 
-            // radioButtonContours
-            // 
-            this.radioButtonContours.AutoSize = true;
-            this.radioButtonContours.Location = new System.Drawing.Point(7, 146);
-            this.radioButtonContours.Name = "radioButtonContours";
-            this.radioButtonContours.Size = new System.Drawing.Size(72, 16);
-            this.radioButtonContours.TabIndex = 0;
-            this.radioButtonContours.TabStop = true;
-            this.radioButtonContours.Text = "contours";
-            this.radioButtonContours.UseVisualStyleBackColor = true;
-            this.radioButtonContours.CheckedChanged += new System.EventHandler(this.radioButtonContours_CheckedChanged);
-            // 
             // buttonStart2
             // 
             this.buttonStart2.Location = new System.Drawing.Point(12, 41);
@@ -195,11 +196,22 @@
             this.buttonStart3.UseVisualStyleBackColor = true;
             this.buttonStart3.Click += new System.EventHandler(this.buttonStart3_Click);
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(12, 328);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 791);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.buttonStart3);
             this.Controls.Add(this.buttonStart2);
             this.Controls.Add(this.groupBox1);
@@ -231,6 +243,7 @@
         private System.Windows.Forms.RadioButton radioButtonContours;
         private System.Windows.Forms.Button buttonStart2;
         private System.Windows.Forms.Button buttonStart3;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,25 +19,102 @@ namespace OpenCVTutorial3
         public Form1()
         {
             InitializeComponent();
+            initButtonText();
+        }
+
+        private void initButtonText()
+        {
+            string filePath1 = Properties.Settings.Default.filePath1;
+            if (filePath1 != "")
+            {
+                string fileName = Path.GetFileName(filePath1);
+                buttonStart.Text = fileName;
+            }
+            string filePath2 = Properties.Settings.Default.filePath2;
+            if (filePath2 != "")
+            {
+                string fileName = Path.GetFileName(filePath2);
+                buttonStart2.Text = fileName;
+            }
+            string filePath3 = Properties.Settings.Default.filePath3;
+            if (filePath3 != "")
+            {
+                string fileName = Path.GetFileName(filePath3);
+                buttonStart3.Text = fileName;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.filePath1 = "";
+            Properties.Settings.Default.filePath2 = "";
+            Properties.Settings.Default.filePath3 = "";
+            Properties.Settings.Default.Save();
+            initButtonText();
+        }
+
+
+        private string getFolderPath()
+        {
+            OpenFileDialog folderBrowser = new OpenFileDialog();
+            folderBrowser.ValidateNames = false;
+            folderBrowser.CheckFileExists = false;
+            folderBrowser.CheckPathExists = true;
+            // Always default to Folder Selection.
+            //folderBrowser.FileName = "Folder Selection.";
+            string folderPath = "";
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                folderPath = folderBrowser.FileName;//Path.GetDirectoryName(folderBrowser.FileName);
+            }
+            return folderPath;
         }
 
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            String filePath = "C:/snue_scoring/제16회중등과학올림피아드_서술형/long_페이지_001.jpg";
-            testImage(filePath);
+            //String filePath = "C:/snue_scoring/제16회중등과학올림피아드_서술형/long_페이지_001.jpg";
+            string filePath1 = Properties.Settings.Default.filePath1;
+            if(filePath1 == "")
+            {
+                filePath1 = getFolderPath();
+                Properties.Settings.Default.filePath1 = filePath1;
+                Properties.Settings.Default.Save();
+
+                string fileName = Path.GetFileName(filePath1);
+                buttonStart.Text = fileName;
+            }
+
+            testImage(filePath1);
         }
 
         private void buttonStart2_Click(object sender, EventArgs e)
         {
-            String filePath = "C:/snue_scoring/답지스캔_서술형/long_페이지_478.jpg";
-            testImage(filePath);
+            //String filePath = "C:/snue_scoring/답지스캔_서술형/long_페이지_478.jpg";
+            string filePath2 = Properties.Settings.Default.filePath1;
+            if (filePath2 == "")
+            {
+                filePath2 = getFolderPath();
+                Properties.Settings.Default.filePath1 = filePath2;
+                Properties.Settings.Default.Save();
+            }
+
+            testImage(filePath2);
+            
         }
 
         private void buttonStart3_Click(object sender, EventArgs e)
         {
-            String filePath = "C:/snue_scoring/답지스캔_단답형/short_페이지_001.jpg";
-            testImage(filePath);
+            //String filePath = "C:/snue_scoring/답지스캔_단답형/short_페이지_001.jpg";
+            string filePath3 = Properties.Settings.Default.filePath1;
+            if (filePath3 == "")
+            {
+                filePath3 = getFolderPath();
+                Properties.Settings.Default.filePath1 = filePath3;
+                Properties.Settings.Default.Save();
+            }
+
+            testImage(filePath3);
         }
 
 
@@ -482,7 +560,6 @@ namespace OpenCVTutorial3
             pictureBox1.Image = bitmapPContours;
         }
 
-        
         private void radioButtonBin_CheckedChanged(object sender, EventArgs e)
         {
             pictureBox1.Image = bitmapSrc;
